@@ -1,0 +1,186 @@
+\documentclass[12pt]{article}
+
+\textwidth 15cm \textheight 23cm \evensidemargin 1cm
+\oddsidemargin 1cm \topmargin -1cm \topskip 0cm
+\parindent 0pt
+\parskip 0cm
+%\parskip \medskipamount
+
+
+\usepackage[dutch]{babel}
+\usepackage{amssymb,amsthm,amsmath}
+\usepackage[utf8]{inputenc}
+%\usepackage{nopageno}
+\usepackage{pdfpages}
+\usepackage{enumerate}
+\usepackage{caption}
+\usepackage{wrapfig}
+\usepackage{pgf,tikz}
+\usepackage{color}
+\usetikzlibrary{arrows}
+\usetikzlibrary{patterns}
+\usepackage[version=3]{mhchem}
+\usepackage{multicol}
+\setlength\columnseprule{.4pt}
+\usepackage{array}
+
+\newcommand{\degree}{\ensuremath{^\circ}}
+\reversemarginpar
+
+\newcommand{\cm}{\mbox{ cm}}
+
+\newcounter{punten}
+\setcounter{punten}{0}
+\newcounter{nvraag}
+\setcounter{nvraag}{1}
+\newcommand{\vraag}[1]{\vspace*{20pt}{\large\bf Vraag \arabic{nvraag} \addtocounter{nvraag}{1}}\marginpar{\vspace*{-10pt}\fbox{\parbox{1.5cm}{{\Large\color{black!45}{#1}}\vspace*{1cm}\hspace*{0.75cm}}}}\addtocounter{punten}{#1}}
+
+\newcounter{noef}
+\setcounter{noef}{1}
+\newcommand{\oefening}{\vspace*{20pt}{\large\bf Oefening \arabic{noef} \addtocounter{noef}{1}}}
+
+\newcommand{\dotrule}[1]{%
+   \parbox[t]{#1}{\vspace*{0.05cm}\dotfill}}
+
+\newcommand{\dotlines}[1]{   
+\foreach \n in {1,...,#1}{
+
+\vspace*{0.05cm}
+\dotfill
+}}
+
+\newcommand{\ruitjes}[1]{
+\definecolor{cqcqcq}{rgb}{0.65,0.65,0.65}
+\begin{tikzpicture}[scale=1.01,line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\draw [color=cqcqcq,dash pattern=on 1pt off 1pt, xstep=0.5cm, ystep=0.5cm] (0,-#1) grid (15,0);
+\end{tikzpicture}
+}
+
+\newcommand{\assenstelsel}[5][1]{
+\definecolor{cqcqcq}{rgb}{0.65,0.65,0.65}
+\begin{tikzpicture}[scale=#1,line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\draw [color=cqcqcq,dash pattern=on 1pt off 1pt, xstep=1.0cm,ystep=1.0cm] (#2,#4) grid (#3,#5);
+\draw[->,color=black] (#2,0) -- (#3,0);
+\draw[shift={(1,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $1$};
+\draw[color=black] (#3.25,0.07) node [anchor=south west] { x};
+\draw[->,color=black] (0,#4) -- (0,#5);
+\draw[shift={(0,1)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $1$};
+\draw[color=black] (0.09,#5.25) node [anchor=west] { y};
+\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+\end{tikzpicture}
+}
+
+\newcommand{\visgraad}[1]{\begin{tabular}{p{0.5cm}|p{#1}}&\\\hline\\\end{tabular}}
+
+
+% geef tabular iets meer ruimte
+\setlength{\tabcolsep}{12pt}
+\renewcommand{\arraystretch}{1.5}
+
+
+\begin{document}
+
+\section{Vectoren}
+
+\oefening
+
+Welke gelijkheden (omcirkel één of meer) zijn waar? $A$ en $B$ zijn twee verschillende punten.
+\begin{enumerate}[(A)]
+  \item $\vec{AB} = -\vec{AB}$
+  \item $|\vec{AB}| = -|\vec{AB}|$
+  \item $\vec{AB} = -\vec{BA}$
+  \item $|\vec{AB}| = -|\vec{BA}|$
+\end{enumerate}
+
+\oefening
+Als er geldt dat $\vec{AB}+\vec{BC}=\vec{AC}$, welke gelijkheid of ongelijkheid (omcirkel één) geldt dan altijd:
+\begin{enumerate}[(A)]
+  \item $|AB|+|BC|=|AC|$
+  \item $|AB|+|BC|<|AC|$
+  \item $|AB|+|BC|\le|AC|$
+  \item $|AB|+|BC|>|AC|$
+  \item $|AB|+|BC|\ge|AC|$
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Een vraag begin je met \verb#\vraag{PUNTEN}# zoals
+
+\vraag{5} Los op in $\mathbb{H}$:
+\begin{enumerate}[(a)]
+  \item $ij-kx=0$
+\end{enumerate}
+
+Ruitjes met \verb#\ruitjes{Xcm}# zoals\\
+\ruitjes{2cm}
+
+Een aantal lijntjes met \verb#\dotlines{N}# zoals
+\dotlines{2}\\
+
+Een lijntje verder aanvullen met \verb#\dotfill# zoals \dotfill\\
+
+Een beetje blanco ruimte voorzien met \verb#\vspace*{Xcm}# zoals
+\vspace*{2cm}
+
+Een stukje in twee verdelen met \verb#\begin{minipage}\end{minipage}# zoals
+
+\begin{minipage}[c]{0.5\textwidth}
+\centering
+Links
+\end{minipage}
+\begin{minipage}[c]{0.5\textwidth}
+\centering
+Rechts
+\end{minipage}
+\vspace*{0.5cm}
+
+
+
+Een figuur invoegen met \verb#\includegraphics[width=0.5\textwidth]{PATH}#\\
+
+Het lopend totaal van de punten weergeven met \verb#\arabic{punten}# zoals in de kantlijn.
+\marginpar{\fbox{\tiny \arabic{punten}}}
+
+%\newpage
+%\appendix
+%\section*{Bijlagen}
+%\vspace*{-0.25cm}
+%\includegraphics[width=0.9\textwidth]{pse}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
